@@ -17,8 +17,8 @@
   body{font-family:'Noto Sans JP',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;color:var(--ink);background:white}
   /* 基本UI */
   .btn{background:linear-gradient(135deg,var(--cta1),var(--cta2),var(--cta3));background-size:200% 200%;
-       color:#fff;padding:.95rem 1.35rem;border-radius:1rem;font-weight:800;
-       box-shadow:0 14px 28px rgba(14,165,233,.25);transition:transform .15s, box-shadow .25s, background-position .6s}
+      color:#fff;padding:.95rem 1.35rem;border-radius:1rem;font-weight:800;
+      box-shadow:0 14px 28px rgba(14,165,233,.25);transition:transform .15s, box-shadow .25s, background-position .6s}
   .btn:hover{transform:translateY(-2px);box-shadow:0 18px 32px rgba(14,165,233,.35);background-position:100% 0}
   .btn-ghost{font-weight:700;color:#075985}
   .card{background:#fff;border-radius:1.2rem;padding:1.6rem;box-shadow:0 14px 28px rgba(2,8,23,.06);border:1px solid rgba(2,8,23,.06);transform-style:preserve-3d;transition:transform .4s cubic-bezier(.2,.6,.2,1), box-shadow .4s}
@@ -63,11 +63,9 @@
     .pillars{display:grid;grid-auto-flow:unset;grid-template-columns:repeat(3,1fr);overflow:visible}
   }
   /* 受講者の声：カルーセル */
-  .carousel{position:relative;overflow:hidden}
-  .track{display:flex;gap:1rem;animation:slide 18s linear infinite}
-  .track:hover{animation-play-state:paused}
-  @keyframes slide{from{transform:translateX(0)} to{transform:translateX(-50%)}}
   .voice{min-width:320px;max-width:360px}
+  .scrollbar-hide::-webkit-scrollbar {display: none;}
+  .scrollbar-hide {-ms-overflow-style: none; scrollbar-width: none;}
   /* CTAセクション */
   .cta-section{background:radial-gradient(60% 80% at 50% 30%, rgba(14,165,233,.32), rgba(99,102,241,.28) 40%, rgba(14,165,233,.18) 70%, transparent), linear-gradient(180deg,#0ea5e9,#0b58a1)}
   .cta-section .btn{box-shadow:0 18px 40px rgba(255,255,255,.22)}
@@ -80,10 +78,8 @@
 </head>
 <body>
 
-<!-- 進捗バー -->
 <div id="progress" class="progress"></div>
 
-<!-- Header -->
 <header id="hdr" class="hdr">
   <div class="max-w-6xl mx-auto px-4 flex items-center justify-between">
     <div class="flex items-center gap-2">
@@ -102,16 +98,14 @@
   </div>
 </header>
 
-<!-- Hero -->
 <section class="section hero pt-24 md:pt-28">
   <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-8 items-center">
     <div class="md:col-span-7 reveal">
       <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
-        指導の場が見つからないGKへ。<br>
-        <span class="text-sky-700">ここを“学びの拠点”にしよう。</span>
+        全国のゴレイロに<span class="text-sky-700">“学びの場”を届ける。</span>
       </h1>
       <p class="mt-4 text-lg text-slate-700">
-        現役Fリーグ選手が伴走。月額5,000円。<strong>動画添削は無制限</strong>・<strong>月1回Zoom</strong>（追加可）・相談し放題。解約はいつでもOK。
+        指導環境がなくても大丈夫。現役FリーグGKが、動画添削・Zoom・相談し放題でサポートします。
       </p>
       <div class="mt-6 flex flex-col sm:flex-row gap-3">
         <a href="YOUR_GOOGLE_FORM_URL" class="btn text-base">申し込みはこちら</a>
@@ -127,13 +121,11 @@
   </div>
 </section>
 
-<!-- 斜め区切り -->
 <div class="divider-slant"></div>
 
-<!-- Flow（申込→Slack→開始） -->
 <section id="flow" class="section bg-white">
   <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-2xl md:text-3xl font-extrabold text-center reveal">はじめ方（かんたん3ステップ）</h2>
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center reveal">はじめ方<br>（かんたん3ステップ）</h2>
     <div class="mt-8 flow">
       <div class="grid md:grid-cols-3 gap-4">
         <div class="step reveal">
@@ -159,18 +151,15 @@
   </div>
 </section>
 
-<!-- 斜め区切り（色反転） -->
 <div class="divider-slant" style="background:linear-gradient(90deg,transparent,rgba(2,8,23,.06),transparent)"></div>
 
-<!-- 3つの柱で、フルサポート -->
 <section id="about" class="section bg-sky-50">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center reveal">
       <h2 class="text-2xl md:text-3xl font-extrabold">3つの柱で、フルサポート</h2>
-      <p class="mt-2 text-slate-600">日々の練習から試合運びまで、オンラインで切れ目なく伴走します。</p>
+      <p class="mt-2 text-slate-600">日々の練習から試合運びまで、<br>オンラインで切れ目なく伴走します。</p>
     </div>
 
-    <!-- PC：3列 / モバイル：スワイプ -->
     <div class="mt-8 pillars">
       <article class="pillar card reveal">
         <h3 class="font-bold text-lg text-sky-700">動画添削（無制限）</h3>
@@ -199,7 +188,6 @@
   </div>
 </section>
 
-<!-- オンラインのメリット -->
 <section id="benefits" class="section bg-white">
   <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-6 items-start">
     <div class="md:col-span-6 reveal">
@@ -226,7 +214,6 @@
   </div>
 </section>
 
-<!-- 料金（CTAはフォームへ） -->
 <section id="price" class="section bg-gradient-to-br from-white to-sky-50">
   <div class="max-w-6xl mx-auto px-4 text-center">
     <h2 class="text-2xl md:text-3xl font-extrabold reveal">料金</h2>
@@ -249,12 +236,10 @@
         </div>
       </div>
     </div>
-    <!-- 支払いロジックは申込後に個別案内（フォーム運用） -->
     <p class="mt-6 text-[11px] text-slate-500 reveal">※ お支払い方法は申込後に個別にご案内します。</p>
   </div>
 </section>
 
-<!-- コーチ紹介 -->
 <section id="coach" class="section bg-white">
   <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-8 items-center">
     <div class="md:col-span-5 reveal">
@@ -279,32 +264,38 @@
   </div>
 </section>
 
-<!-- 受講者の声（増量） -->
 <section id="voice" class="section bg-slate-50">
   <div class="max-w-6xl mx-auto px-4">
     <h2 class="text-2xl md:text-3xl font-extrabold text-center reveal">受講者の声</h2>
-    <div class="carousel mt-8 reveal">
-      <div class="track">
-        <!-- 6枚＋6枚（ループ） -->
-        <div class="card voice"><p class="text-sm text-slate-700">「指摘がはっきりして練習が変わりました。失点の原因を具体的に直せるように。」</p><div class="mt-3 text-xs text-slate-500">高校GK / Aさん</div></div>
-        <div class="card voice"><p class="text-sm text-slate-700">「試合前の準備とメンタルの整え方が分かり、落ち着いてプレーできるようになった。」</p><div class="mt-3 text-xs text-slate-500">社会人GK / Bさん</div></div>
-        <div class="card voice"><p class="text-sm text-slate-700">「Zoomで毎月整理できる。次に何をするかが毎回明確。」</p><div class="mt-3 text-xs text-slate-500">中学GK / Cさん</div></div>
-        <div class="card voice"><p class="text-sm text-slate-700">「動画の返答が早く、ポイントが短くて分かりやすい。」</p><div class="mt-3 text-xs text-slate-500">大学GK / Dさん</div></div>
-        <div class="card voice"><p class="text-sm text-slate-700">「一人で悩まなくなって、練習の狙いがはっきりした。」</p><div class="mt-3 text-xs text-slate-500">高校GK / Eさん</div></div>
-        <div class="card voice"><p class="text-sm text-slate-700">「判断の基準が分かってきて、安定感が増したと周りに言われた。」</p><div class="mt-3 text-xs text-slate-500">社会人GK / Fさん</div></div>
-
-        <div class="card voice"><p class="text-sm text-slate-700">「失点後の切り替え方まで伴走。次の試合に引きずらなくなった。」</p><div class="mt-3 text-xs text-slate-500">高校GK / Gさん</div></div>
-        <div class="card voice"><p class="text-sm text-slate-700">「用具や練習メニューの相談ができて、効率が上がった。」</p><div class="mt-3 text-xs text-slate-500">中学GK / Hさん</div></div>
-        <div class="card voice"><p class="text-sm text-slate-700">「フォームを少し直しただけで、セービングの成功率が上がった。」</p><div class="mt-3 text-xs text-slate-500">大学GK / Iさん</div></div>
-        <div class="card voice"><p class="text-sm text-slate-700">「部活の時間では足りない部分を、オンラインで補えた。」</p><div class="mt-3 text-xs text-slate-500">高校GK / Jさん</div></div>
-        <div class="card voice"><p class="text-sm text-slate-700">「試合後にすぐ相談できるのがありがたい。次の練習が迷わず進む。」</p><div class="mt-3 text-xs text-slate-500">社会人GK / Kさん</div></div>
-        <div class="card voice"><p class="text-sm text-slate-700">「基礎から整理できて、自信を持ってコーチングできるようになった。」</p><div class="mt-3 text-xs text-slate-500">中学GK / Lさん</div></div>
+    <div class="relative">
+      <div class="hidden md:block absolute top-1/2 left-0 w-full z-10">
+        <div class="max-w-6xl mx-auto flex justify-between px-4">
+          <button id="voicePrevBtn" aria-label="前へ" class="bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-white transition -ml-8">
+            <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+          </button>
+          <button id="voiceNextBtn" aria-label="次へ" class="bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-white transition -mr-8">
+            <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+      </div>
+      <div id="voiceCarousel" class="mt-8 reveal flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide">
+        <div class="card voice snap-center flex-shrink-0"><p class="text-sm text-slate-700">「指摘がはっきりして練習が変わりました。失点の原因を具体的に直せるように。」</p><div class="mt-3 text-xs text-slate-500">高校GK / Aさん</div></div>
+        <div class="card voice snap-center flex-shrink-0"><p class="text-sm text-slate-700">「試合前の準備とメンタルの整え方が分かり、落ち着いてプレーできるようになった。」</p><div class="mt-3 text-xs text-slate-500">社会人GK / Bさん</div></div>
+        <div class="card voice snap-center flex-shrink-0"><p class="text-sm text-slate-700">「Zoomで毎月整理できる。次に何をするかが毎回明確。」</p><div class="mt-3 text-xs text-slate-500">中学GK / Cさん</div></div>
+        <div class="card voice snap-center flex-shrink-0"><p class="text-sm text-slate-700">「動画の返答が早く、ポイントが短くて分かりやすい。」</p><div class="mt-3 text-xs text-slate-500">大学GK / Dさん</div></div>
+        <div class="card voice snap-center flex-shrink-0"><p class="text-sm text-slate-700">「一人で悩まなくなって、練習の狙いがはっきりした。」</p><div class="mt-3 text-xs text-slate-500">高校GK / Eさん</div></div>
+        <div class="card voice snap-center flex-shrink-0"><p class="text-sm text-slate-700">「判断の基準が分かってきて、安定感が増したと周りに言われた。」</p><div class="mt-3 text-xs text-slate-500">社会人GK / Fさん</div></div>
+        <div class="card voice snap-center flex-shrink-0"><p class="text-sm text-slate-700">「失点後の切り替え方まで伴走。次の試合に引きずらなくなった。」</p><div class="mt-3 text-xs text-slate-500">高校GK / Gさん</div></div>
+        <div class="card voice snap-center flex-shrink-0"><p class="text-sm text-slate-700">「用具や練習メニューの相談ができて、効率が上がった。」</p><div class="mt-3 text-xs text-slate-500">中学GK / Hさん</div></div>
+        <div class="card voice snap-center flex-shrink-0"><p class="text-sm text-slate-700">「フォームを少し直しただけで、セービングの成功率が上がった。」</p><div class="mt-3 text-xs text-slate-500">大学GK / Iさん</div></div>
+        <div class="card voice snap-center flex-shrink-0"><p class="text-sm text-slate-700">「部活の時間では足りない部分を、オンラインで補えた。」</p><div class="mt-3 text-xs text-slate-500">高校GK / Jさん</div></div>
+        <div class="card voice snap-center flex-shrink-0"><p class="text-sm text-slate-700">「試合後にすぐ相談できるのがありがたい。次の練習が迷わず進む。」</p><div class="mt-3 text-xs text-slate-500">社会人GK / Kさん</div></div>
+        <div class="card voice snap-center flex-shrink-0"><p class="text-sm text-slate-700">「基礎から整理できて、自信を持ってコーチングできるようになった。」</p><div class="mt-3 text-xs text-slate-500">中学GK / Lさん</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ（増量） -->
 <section id="faq" class="section bg-white">
   <div class="max-w-6xl mx-auto px-4">
     <h2 class="text-2xl md:text-3xl font-extrabold text-center reveal">よくある質問</h2>
@@ -321,16 +312,17 @@
   </div>
 </section>
 
-<!-- CTA -->
 <section class="section cta-section text-center text-white">
-  <h2 class="text-2xl md:text-3xl font-extrabold reveal">「環境がない」を言い訳にしない。</h2>
-  <p class="mt-2 reveal">ここから、伸びる。</p>
+  <h2 class="text-2xl md:text-3xl font-extrabold reveal">あなたの上達したいという想いを<br>一緒に叶えさせてください！</h2>
+  <p class="mt-4 text-base reveal">
+    指導者がいない、環境がない、さらに上手くなりたい。<br>
+    いろんな“上達したい”を本気でサポートします！
+  </p>
   <div class="mt-6">
     <a href="YOUR_GOOGLE_FORM_URL" class="btn text-base">申し込みはこちら</a>
   </div>
 </section>
 
-<!-- Sticky CTA -->
 <div class="fixed bottom-3 inset-x-0 z-50">
   <div class="max-w-6xl mx-auto px-4">
     <div class="flex items-center justify-between gap-3 rounded-xl bg-white/90 backdrop-blur border border-slate-200 shadow-xl px-3 py-2">
@@ -342,7 +334,6 @@
   </div>
 </div>
 
-<!-- Footer -->
 <footer class="py-10 bg-slate-900 text-slate-300 text-center text-sm">
   <div>© <span id="y"></span> Tamo Junto / Nishi Kota</div>
   <div class="mt-2 text-xs">
@@ -352,7 +343,6 @@
   </div>
 </footer>
 
-<!-- JS：スクロール進捗／フェードイン／ヘッダー色 -->
 <script>
   // 年号
   document.getElementById('y').textContent = new Date().getFullYear();
@@ -372,6 +362,25 @@
   };
   document.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
+
+  // 受講者の声 カルーセル
+  const voiceCarousel = document.getElementById('voiceCarousel');
+  const voicePrevBtn = document.getElementById('voicePrevBtn');
+  const voiceNextBtn = document.getElementById('voiceNextBtn');
+
+  if (voiceCarousel && voicePrevBtn && voiceNextBtn) {
+    const card = voiceCarousel.querySelector('.voice');
+    // カード幅 + gap-4 (1rem = 16px)
+    const scrollStep = card ? card.offsetWidth + 16 : 336;
+
+    voiceNextBtn.addEventListener('click', () => {
+      voiceCarousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
+    });
+
+    voicePrevBtn.addEventListener('click', () => {
+      voiceCarousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+    });
+  }
 </script>
 </body>
 </html>
