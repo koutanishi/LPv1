@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>指導の場がないGKへ｜オンラインコーチング（月5,000円・10人限定）</title>
-  <meta name="description" content="指導の場がないGKを助けたい。現役FリーグGKが伴走するオンラインコーチング。動画添削は無制限、月1回のZoom指導つき（追加OK）。月額5,000円・10人限定。初心者歓迎、解約はいつでもOK。" />
+  <meta name="description" content="現役FリーグGKが伴走。動画添削は無制限、月1回のZoom指導（追加可）。月額5,000円・10人限定。指導の場がないGKのためのオンラインコーチング。" />
   <meta name="format-detection" content="telephone=no" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,41 +12,26 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     :root{
-      --brand:#0ea5e9; /* sky-500 */
-      --brand-dark:#0284c7; /* sky-600 */
-      --accent:#f59e0b; /* amber-500 */
+      --brand:#0ea5e9; --brand-dark:#0284c7; --accent:#f59e0b;
     }
     html{scroll-behavior:smooth}
     body{font-family:'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial;}
     .hero-bg{
-      background: radial-gradient(1200px 600px at 80% -10%, rgba(14,165,233,.15), transparent 60%),
-                  radial-gradient(800px 400px at -10% 0%, rgba(245,158,11,.12), transparent 60%);
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(14,165,233,.14), transparent 60%),
+                  radial-gradient(800px 400px at -10% 0%, rgba(245,158,11,.10), transparent 60%);
     }
-    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
     .reveal.visible{opacity:1;transform:translateY(0)}
-    .glass{backdrop-filter: blur(8px); background: rgba(255,255,255,.6); box-shadow: 0 10px 30px rgba(2,8,23,.08);}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-weight:700;border-radius:.75rem;padding:.85rem 1.25rem;background:linear-gradient(180deg, var(--brand), var(--brand-dark));color:#fff;box-shadow:0 10px 20px rgba(14,165,233,.25);transition:transform .06s ease, box-shadow .2s ease}
     .btn:hover{transform:translateY(-1px);box-shadow:0 14px 24px rgba(14,165,233,.35)}
-    .sticky-cta{position:sticky;bottom:0;z-index:40;backdrop-filter:saturate(120%) blur(8px);background:rgba(255,255,255,.9);border-top:1px solid rgba(2,8,23,.06)}
+    .sticky-cta{position:sticky;bottom:0;z-index:40;backdrop-filter:saturate(120%) blur(8px);background:rgba(255,255,255,.92);border-top:1px solid rgba(2,8,23,.06)}
     .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
     .faq.open .faq-a{max-height:360px}
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      .reveal{transition:none}
-      .btn{transition:none}
-      .faq-a{transition:none}
-    }
+    .card-soft{border:1px solid rgba(2,8,23,.06);box-shadow:0 8px 20px rgba(2,8,23,.05)}
+    .badge{font-size:.7rem;padding:.2rem .5rem;border-radius:.5rem;background:#e0f2fe;color:#0369a1}
+    .icon-wrap{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:#f0f9ff;border:1px solid #e2e8f0}
+    @media (prefers-reduced-motion: reduce){.reveal{transition:none}.btn{transition:none}.faq-a{transition:none}}
   </style>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Course",
-    "name":"オンラインGK（ゴレイロ）コーチング",
-    "description":"指導の場がないGKのための月額コーチング。動画添削は無制限、月1回のZoom指導つき（追加可）。10人限定・月5,000円。",
-    "provider":{"@type":"Organization","name":"Tamo Junto","url":"https://example.com"},
-    "offers":{"@type":"Offer","price":"5000","priceCurrency":"JPY","availability":"https://schema.org/InStock"}
-  }
-  </script>
 </head>
 <body class="text-slate-800 bg-white">
 
@@ -55,16 +40,16 @@
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center gap-2">
         <span class="text-xl font-extrabold tracking-tight">GK Online Coaching</span>
-        <span class="hidden sm:inline text-xs px-2 py-0.5 rounded-full bg-sky-100 text-sky-700">10人限定</span>
+        <span class="hidden sm:inline badge">10人限定</span>
       </div>
       <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#about" class="hover:text-sky-600">内容</a>
-        <a href="#price" class="hover:text-sky-600">料金</a>
-        <a href="#payments" class="hover:text-sky-600">お支払い</a>
-        <a href="#coach" class="hover:text-sky-600">コーチ</a>
-        <a href="#faq" class="hover:text-sky-600">FAQ</a>
+        <a href="#about" class="hover:text-sky-700">内容</a>
+        <a href="#price" class="hover:text-sky-700">料金</a>
+        <a href="#payments" class="hover:text-sky-700">お支払い</a>
+        <a href="#coach" class="hover:text-sky-700">コーチ</a>
+        <a href="#faq" class="hover:text-sky-700">FAQ</a>
       </nav>
-      <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-sm" aria-label="今すぐ申し込む">今すぐ申し込む</a>
+      <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-sm" aria-label="今すぐ申し込む">申し込む</a>
     </div>
   </header>
 
@@ -74,86 +59,97 @@
       <div class="grid md:grid-cols-12 gap-8 items-center">
         <div class="md:col-span-7 reveal">
           <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
-            <span class="bg-gradient-to-r from-sky-600 to-sky-400 bg-clip-text text-transparent">指導の場がなくて困っているGKへ。</span><br class="hidden md:block">あなたの“学ぶ場”を、ここに。
+            <span class="bg-gradient-to-r from-sky-700 to-sky-500 bg-clip-text text-transparent">指導の場が見つからないGKへ。</span><br class="hidden md:block">ここを、あなたの“学びの拠点”に。
           </h1>
-          <p class="mt-4 text-slate-600 md:text-lg">
-            現役FリーグGKが伴走。月5,000円／<strong>10人限定</strong>。<strong>動画添削は無制限</strong>、<strong>月1回のZoom指導</strong>つき（追加OK）。初心者歓迎、解約はいつでもOK。
-            <span class="block text-xs mt-2 text-slate-500">学校・クラブにGKコーチがいない、地域に環境がない——そんなあなたのためのオンラインコーチングです。</span>
+          <p class="mt-4 text-slate-700 md:text-lg">
+            現役FリーグGKが伴走。月5,000円／<strong>10人限定</strong>。<strong>動画添削は無制限</strong>、<strong>月1回のZoom指導</strong>（追加可）。解約はいつでもOK。
           </p>
           <div class="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-3">
-            <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-base" aria-label="今すぐ申し込む">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m4-4H8"/></svg>
-              今すぐ申し込む
-            </a>
-            <a href="#about" class="inline-flex items-center gap-2 font-semibold text-sky-700 hover:text-sky-900">
-              詳細を見る
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
-            </a>
-          </div>
-          <div class="mt-6 grid grid-cols-3 gap-3 max-w-lg">
-            <div class="glass rounded-xl px-4 py-3 text-center">
-              <div class="text-xs text-slate-500">月額</div>
-              <div class="text-lg font-extrabold">¥5,000</div>
-            </div>
-            <div class="glass rounded-xl px-4 py-3 text-center">
-              <div class="text-xs text-slate-500">定員</div>
-              <div class="text-lg font-extrabold">10人限定</div>
-            </div>
-            <div class="glass rounded-xl px-4 py-3 text-center">
-              <div class="text-xs text-slate-500">解約</div>
-              <div class="text-lg font-extrabold">いつでもOK</div>
-            </div>
+            <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-base">今すぐ申し込む</a>
+            <a href="#about" class="inline-flex items-center gap-2 font-semibold text-sky-700 hover:text-sky-900">内容を見る</a>
           </div>
         </div>
         <div class="md:col-span-5 reveal">
           <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-slate-200">
             <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1400&auto=format&fit=crop" alt="GKトレーニングのイメージ" class="w-full h-full object-cover" loading="lazy">
-            <div class="absolute bottom-3 right-3 bg-black/55 text-white text-xs px-2 py-1 rounded">イメージ画像</div>
+            <div class="absolute bottom-3 right-3 bg-black/55 text-white text-xs px-2 py-1 rounded">イメージ写真</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- About / Offering -->
+  <!-- About / 3 Pillars (NEW LAYOUT with illustrations) -->
   <section id="about" class="py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="grid md:grid-cols-12 gap-10 items-start">
-        <div class="md:col-span-6 reveal">
-          <h2 class="text-2xl md:text-3xl font-extrabold">“指導の場がない”GKのための3本柱</h2>
-          <ul class="mt-4 space-y-3 text-slate-700">
-            <li class="flex gap-2"><span class="text-accent">•</span> <strong>動画添削：無制限</strong> — 撮れたらいつでも投稿。<strong>具体的な指摘と次の一歩</strong>を、原則<strong>48時間以内</strong>に返します。</li>
-            <li class="flex gap-2"><span class="text-accent">•</span> <strong>Zoom指導：月1回（30〜40分）</strong> — 技術・判断・メンタルを整理。必要に応じて<strong>追加Zoom（有料）</strong>も可能。</li>
-            <li class="flex gap-2"><span class="text-accent">•</span> <strong>いつでも相談（Slack／オープンチャット）</strong> — 練習メニュー、用具、試合前後の準備まで。</li>
-          </ul>
-          <p class="mt-5 text-slate-600">小さな約束：<strong>「何をすれば伸びるか」を、あなたの状況から一緒に決める。</strong></p>
-        </div>
-        <div class="md:col-span-6 reveal">
-          <div class="rounded-2xl border border-slate-200 p-6 md:p-8">
-            <h3 class="font-extrabold text-lg">料金・定員・運用</h3>
-            <ul class="mt-3 space-y-2 text-slate-700 text-sm">
-              <li class="flex gap-2"><span class="text-sky-500 mt-0.5">✓</span> 月額 <strong>5,000円（税込）</strong></li>
-              <li class="flex gap-2"><span class="text-sky-500 mt-0.5">✓</span> <strong>10人限定</strong>（満席になり次第、募集停止）</li>
-              <li class="flex gap-2"><span class="text-sky-500 mt-0.5">✓</span> 支払いは<strong>Stripe</strong>の安全な決済ページ</li>
-              <li class="flex gap-2"><span class="text-sky-500 mt-0.5">✓</span> <strong>解約いつでもOK</strong>（翌月から停止）</li>
-            </ul>
-            <div class="mt-6 flex gap-3">
-              <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn" aria-label="今すぐ申し込む">今すぐ申し込む</a>
-              <a href="#payments" class="inline-flex items-center font-semibold text-sky-700 hover:text-sky-900">お支払い方法を確認</a>
-            </div>
-            <div class="mt-3 text-xs text-slate-500"><strong>優先枠：</strong>GKコーチがいない／通える指導環境がない方</div>
+      <div class="reveal text-center max-w-3xl mx-auto">
+        <h2 class="text-2xl md:text-3xl font-extrabold">“今の環境でも、伸びていける。”</h2>
+        <p class="mt-2 text-slate-600">指導の場がなくても大丈夫。オンラインで、必要な視点と練習の方向づけを用意します。</p>
+      </div>
+
+      <!-- cards -->
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <!-- Pillar 1 -->
+        <article class="card-soft rounded-2xl bg-white p-6 reveal">
+          <div class="icon-wrap mb-4">
+            <!-- イラスト風：再生＋注釈 -->
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="10" stroke="#0284c7" stroke-width="1.6"/>
+              <polygon points="10,8 16,12 10,16" fill="#0ea5e9"/>
+              <path d="M6 19l4-3" stroke="#94a3b8" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
           </div>
-        </div>
+          <h3 class="font-bold text-lg">動画添削（無制限）</h3>
+          <p class="mt-2 text-slate-700 text-sm leading-relaxed">
+            撮れたらそのまま投稿。<span class="font-semibold">具体的な指摘と、次にやること</span>を返します。原則<span class="font-semibold">48時間以内</span>に返信。
+          </p>
+        </article>
+
+        <!-- Pillar 2 -->
+        <article class="card-soft rounded-2xl bg-white p-6 reveal">
+          <div class="icon-wrap mb-4">
+            <!-- イラスト風：ビデオ通話 -->
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="5" width="14" height="12" rx="2" stroke="#0284c7" stroke-width="1.6"/>
+              <polygon points="17,9 21,7 21,17 17,15" fill="#0ea5e9"/>
+              <circle cx="10" cy="11" r="2" fill="#94a3b8"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg">Zoom指導（月1回・30〜40分）</h3>
+          <p class="mt-2 text-slate-700 text-sm leading-relaxed">
+            技術・判断・メンタルを整理。必要に応じて<span class="font-semibold">追加Zoom（有料）</span>も可能です。
+          </p>
+        </article>
+
+        <!-- Pillar 3 -->
+        <article class="card-soft rounded-2xl bg-white p-6 reveal">
+          <div class="icon-wrap mb-4">
+            <!-- イラスト風：吹き出し -->
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+              <path d="M4 6h12a3 3 0 013 3v3a3 3 0 01-3 3H9l-4 3v-3H4a3 3 0 01-3-3V9a3 3 0 013-3z" stroke="#0284c7" stroke-width="1.6" fill="none"/>
+              <circle cx="9" cy="11" r="1" fill="#0ea5e9"/><circle cx="12" cy="11" r="1" fill="#0ea5e9"/><circle cx="15" cy="11" r="1" fill="#0ea5e9"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-lg">いつでも相談（Slack／OC）</h3>
+          <p class="mt-2 text-slate-700 text-sm leading-relaxed">
+            練習メニュー、用具、試合前後の準備まで。小さな疑問も、その場で解決していきます。
+          </p>
+        </article>
+      </div>
+
+      <!-- small note -->
+      <div class="mt-6 text-xs text-slate-500 text-center reveal">
+        迷ったらすぐ相談。<span class="font-semibold">「何をやれば伸びるか」</span>を一緒に決めていきます。
       </div>
     </div>
   </section>
 
-  <!-- Price (CTA center) -->
+  <!-- Price -->
   <section id="price" class="py-12 md:py-16 bg-slate-50">
     <div class="max-w-6xl mx-auto px-4">
       <div class="reveal text-center">
         <h2 class="text-2xl md:text-3xl font-extrabold">月額プラン</h2>
-        <p class="mt-2 text-slate-600">申込は数分で完了。解約はいつでもOK（翌月から停止）。</p>
+        <p class="mt-2 text-slate-600">申し込みは数分。解約はいつでもOK（翌月から停止）。</p>
       </div>
       <div class="mt-8 grid md:grid-cols-3 gap-6">
         <div class="md:col-start-2 md:col-span-1 reveal">
@@ -169,7 +165,7 @@
               <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 初心者歓迎・解約いつでもOK</li>
             </ul>
             <div class="mt-6">
-              <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn w-full" aria-label="今すぐ申し込む">今すぐ申し込む</a>
+              <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn w-full">今すぐ申し込む</a>
             </div>
             <div class="mt-3 text-center text-xs text-slate-500">定員：<strong>10人限定</strong></div>
           </div>
@@ -178,53 +174,44 @@
     </div>
   </section>
 
-  <!-- Payments (Stripe methods, honest info) -->
-  <section id="payments" class="py-12 md:py-16">
+  <!-- Payments (MINI & QUIET) -->
+  <section id="payments" class="pt-4 pb-10">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="reveal max-w-3xl">
-        <h2 class="text-2xl md:text-3xl font-extrabold">お支払い方法（Stripe）</h2>
-        <p class="mt-2 text-slate-600">Stripeのホスト型決済ページを使用します。対応端末ではウォレットも表示されます。</p>
-        <div class="mt-5 rounded-2xl border border-slate-200 p-6 bg-white">
-          <h3 class="font-bold">サブスク（自動更新）で使える主な方法</h3>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700">
-            <li class="flex gap-2"><span class="text-sky-500">✓</span> クレジット／デビットカード：<strong>Visa / Mastercard / JCB / American Express / Diners / Discover</strong></li>
-            <li class="flex gap-2"><span class="text-sky-500">✓</span> <strong>Apple Pay / Google Pay</strong>（対応端末・ブラウザで自動表示）</li>
-          </ul>
-          <h3 class="mt-6 font-bold">サブスクには<strong>不向き／非対応</strong>のもの</h3>
-          <ul class="mt-3 space-y-2 text-sm text-slate-700">
-            <li class="flex gap-2"><span class="text-amber-500">•</span> <strong>PayPay</strong>：単発決済のみ。<strong>継続課金は不可</strong></li>
-            <li class="flex gap-2"><span class="text-amber-500">•</span> <strong>コンビニ払い（Konbini）</strong>：都度の支払い向け。<strong>自動引き落とし不可</strong></li>
-            <li class="flex gap-2"><span class="text-amber-500">•</span> <strong>銀行振込</strong>：請求書ベースの都度振込。<strong>自動課金ではない</strong></li>
-          </ul>
-          <p class="mt-6 text-xs text-slate-500">※ 上記は日本向けの一般的な取り扱い。ブランドやウォレットの表示は、端末・ブラウザ・アカウント設定により異なる場合があります。</p>
-        </div>
-        <div class="mt-6">
-          <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn" aria-label="Stripeで申し込む">Stripeで申し込む</a>
+      <div class="reveal max-w-3xl mx-auto text-center">
+        <p class="text-xs text-slate-500">お支払いはStripeの決済ページで行います。</p>
+        <div class="mt-2 inline-flex items-center gap-2 text-[11px] text-slate-500">
+          <span>対応カード：</span>
+          <span class="inline-flex items-center gap-1 px-2 py-1 bg-slate-100 rounded">Visa</span>
+          <span class="inline-flex items-center gap-1 px-2 py-1 bg-slate-100 rounded">Mastercard</span>
+          <span class="inline-flex items-center gap-1 px-2 py-1 bg-slate-100 rounded">JCB</span>
+          <span class="inline-flex items-center gap-1 px-2 py-1 bg-slate-100 rounded">American Express</span>
+          <span class="inline-flex items-center gap-1 px-2 py-1 bg-slate-100 rounded">Diners</span>
+          <span class="inline-flex items-center gap-1 px-2 py-1 bg-slate-100 rounded">Discover</span>
+          <span class="inline-flex items-center gap-1 px-2 py-1 bg-slate-100 rounded">Apple Pay / Google Pay</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Coach -->
-  <section id="coach" class="py-12 md:py-16 bg-slate-50">
+  <section id="coach" class="py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-8 items-center">
       <div class="md:col-span-5 reveal">
         <div class="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-slate-200">
           <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=1200&auto=format&fit=crop" alt="コーチ：西 滉太（イメージ）" class="w-full h-full object-cover" loading="lazy">
-          <div class="absolute bottom-3 right-3 bg-black/55 text-white text-xs px-2 py-1 rounded">イメージ画像</div>
+          <div class="absolute bottom-3 right-3 bg-black/55 text-white text-xs px-2 py-1 rounded">イメージ写真</div>
         </div>
       </div>
       <div class="md:col-span-7 reveal">
         <h2 class="text-2xl md:text-3xl font-extrabold">コーチ：西 滉太</h2>
-        <p class="mt-2 text-slate-600">
-          Fリーグ「しながわシティ」所属ゴレイロ。ブラジル修行経験。僕の原点は
-          <strong>「指導の場がないGKを助けたい」</strong>。技術だけでなく、
-          <strong>判断・準備・メンタル</strong>まで、迷いを減らす伴走をします。
+        <p class="mt-2 text-slate-700">
+          Fリーグ「しながわシティ」所属。<span class="font-semibold">「指導の場がないGKを助けたい」</span>という思いで、技術だけでなく
+          <span class="font-semibold">判断・準備・メンタル</span>まで伴走します。
         </p>
         <ul class="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
-          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 現役選手の視点で“いま必要な課題”を提示</li>
-          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 具体的・短文のフィードバックで迷いを減らす</li>
-          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> メンタル・準備・試合前後の整え方まで</li>
+          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 今の環境で出来る練習と優先順位を提示</li>
+          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 迷いを減らす、短く具体的なフィードバック</li>
+          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 試合前後の準備・心の整え方まで</li>
           <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 初心者〜上級まで個別最適化</li>
         </ul>
       </div>
@@ -232,72 +219,42 @@
   </section>
 
   <!-- FAQ -->
-  <section id="faq" class="py-12 md:py-16">
+  <section id="faq" class="py-12 md:py-16 bg-slate-50">
     <div class="max-w-6xl mx-auto px-4">
       <div class="reveal text-center">
         <h2 class="text-2xl md:text-3xl font-extrabold">よくある質問</h2>
-        <p class="mt-2 text-slate-600">不安をゼロにしてから始めてください。</p>
+        <p class="mt-2 text-slate-600">不安はここで解消して、気持ちよくスタートしましょう。</p>
       </div>
       <div class="mt-8 max-w-3xl mx-auto space-y-3">
-        <!-- Q1 -->
-        <div class="faq rounded-xl bg-white border border-slate-200 p-4 reveal">
+        <div class="faq rounded-2xl bg-white border border-slate-200 p-4 reveal">
           <button class="w-full text-left flex items-center justify-between gap-3">
-            <span class="font-bold">初心者でも大丈夫ですか？</span>
-            <span class="text-slate-500">＋</span>
+            <span class="font-bold">初心者でも大丈夫ですか？</span><span class="text-slate-500">＋</span>
           </button>
-          <div class="faq-a mt-2 text-slate-600">
-            もちろんです。基礎から丁寧にサポートします。年齢・経験は問いません。
-          </div>
+          <div class="faq-a mt-2 text-slate-700">もちろん大丈夫です。基礎から丁寧に進めます。</div>
         </div>
-        <!-- Q2 -->
-        <div class="faq rounded-xl bg-white border border-slate-200 p-4 reveal">
+        <div class="faq rounded-2xl bg-white border border-slate-200 p-4 reveal">
           <button class="w-full text-left flex items-center justify-between gap-3">
-            <span class="font-bold">動画は何本まで送れますか？</span>
-            <span class="text-slate-500">＋</span>
+            <span class="font-bold">動画は何本まで送れますか？</span><span class="text-slate-500">＋</span>
           </button>
-          <div class="faq-a mt-2 text-slate-600">
-            <strong>無制限</strong>です。質を上げるために重要シーンの絞り込みをお願いする場合があります。
-          </div>
+          <div class="faq-a mt-2 text-slate-700"><span class="font-semibold">無制限</span>です。必要に応じて重要シーンの絞り込みをご提案します。</div>
         </div>
-        <!-- Q3 -->
-        <div class="faq rounded-xl bg-white border border-slate-200 p-4 reveal">
+        <div class="faq rounded-2xl bg-white border border-slate-200 p-4 reveal">
           <button class="w-full text-left flex items-center justify-between gap-3">
-            <span class="font-bold">Zoomはどのくらいの長さ？追加は可能？</span>
-            <span class="text-slate-500">＋</span>
+            <span class="font-bold">Zoomはどのくらいの長さ？追加はできますか？</span><span class="text-slate-500">＋</span>
           </button>
-          <div class="faq-a mt-2 text-slate-600">
-            基本は<strong>月1回・30〜40分</strong>です。必要に応じて<strong>追加（有料）</strong>も可能です。
-          </div>
+          <div class="faq-a mt-2 text-slate-700">基本は<span class="font-semibold">月1回・30〜40分</span>。追加は<span class="font-semibold">有料</span>で対応します。</div>
         </div>
-        <!-- Q4 -->
-        <div class="faq rounded-xl bg-white border border-slate-200 p-4 reveal">
+        <div class="faq rounded-2xl bg-white border border-slate-200 p-4 reveal">
           <button class="w-full text-left flex items-center justify-between gap-3">
-            <span class="font-bold">解約はいつでもできますか？</span>
-            <span class="text-slate-500">＋</span>
+            <span class="font-bold">解約はいつでも可能ですか？</span><span class="text-slate-500">＋</span>
           </button>
-          <div class="faq-a mt-2 text-slate-600">
-            はい。<strong>いつでも可能</strong>です。解約は翌月からの停止となります（Stripeのカスタマーポータルでご自身で手続きできます）。
-          </div>
+          <div class="faq-a mt-2 text-slate-700">いつでも可能です。翌月から停止になります（Stripeのカスタマーポータルから操作できます）。</div>
         </div>
-        <!-- Q5 -->
-        <div class="faq rounded-xl bg-white border border-slate-200 p-4 reveal">
+        <div class="faq rounded-2xl bg-white border border-slate-200 p-4 reveal">
           <button class="w-full text-left flex items-center justify-between gap-3">
-            <span class="font-bold">連絡手段は？Slackが初めてでも大丈夫？</span>
-            <span class="text-slate-500">＋</span>
+            <span class="font-bold">連絡手段は？</span><span class="text-slate-500">＋</span>
           </button>
-          <div class="faq-a mt-2 text-slate-600">
-            主に<strong>Slack／オープンチャット</strong>を使います。入会後に招待します。
-          </div>
-        </div>
-        <!-- Q6 -->
-        <div class="faq rounded-xl bg-white border border-slate-200 p-4 reveal">
-          <button class="w-full text-left flex items-center justify-between gap-3">
-            <span class="font-bold">満席だった場合は？</span>
-            <span class="text-slate-500">＋</span>
-          </button>
-          <div class="faq-a mt-2 text-slate-600">
-            空き次第ご案内します。希望者は待機リストに登録できます。
-          </div>
+          <div class="faq-a mt-2 text-slate-700">Slackまたはオープンチャットを使います。入会後にご案内します。</div>
         </div>
       </div>
     </div>
@@ -306,10 +263,10 @@
   <!-- Re-CTA -->
   <section class="py-12 md:py-16">
     <div class="max-w-6xl mx-auto px-4 text-center reveal">
-      <h2 class="text-2xl md:text-3xl font-extrabold">“学ぶ場”がないなら、ここから作ろう。</h2>
-      <p class="mt-2 text-slate-600">10人限定。今の環境のままでも、成長は始められる。</p>
+      <h2 class="text-2xl md:text-3xl font-extrabold">“今の環境のまま”でも、始められる。</h2>
+      <p class="mt-2 text-slate-600">まずは一歩だけ。そこから伸びが変わります。</p>
       <div class="mt-6">
-        <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-base" aria-label="今すぐ申し込む">今すぐ申し込む</a>
+        <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-base">今すぐ申し込む</a>
       </div>
     </div>
   </section>
@@ -320,7 +277,7 @@
       <div class="text-sm">
         <span class="font-extrabold">月5,000円</span>・<span class="font-semibold">10人限定</span>｜動画添削 無制限・Zoom月1回
       </div>
-      <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-sm" aria-label="今すぐ申し込む">申込む</a>
+      <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-sm">申込む</a>
     </div>
   </div>
 
@@ -328,7 +285,7 @@
   <footer class="py-8 border-t border-slate-100 text-center text-xs text-slate-500">
     <div class="max-w-6xl mx-auto px-4">
       <div>© <span id="y"></span> Tamo Junto / Nishi Kota</div>
-      <div class="mt-2">※ 返金・規約などは別ページに明記してください（例：翌月停止・途中月の返金なし・個人情報の取り扱い）。</div>
+      <div class="mt-2">※ 返金・規約は別ページにご用意ください（例：翌月停止・途中月の返金なし・個人情報の取り扱い）。</div>
     </div>
   </footer>
 
@@ -336,9 +293,7 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
     const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-      });
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });
     },{threshold:0.12});
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
     document.querySelectorAll('.faq > button').forEach(btn=>{
