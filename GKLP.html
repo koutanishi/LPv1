@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>オンラインGKコーチング｜月5,000円・10人限定｜西 滉太</title>
+  <meta name="description" content="現役FリーグGK・西 滉太によるオンラインコーチング。動画添削は無制限、月1回のZoom指導つき（追加OK）。10人限定・月5,000円。初心者歓迎、解約はいつでもOK。" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <!-- フォント（読みやすさ重視・表示ブロック回避） -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+  <!-- Tailwind（CDN版。Genspark/Geminiに貼るだけでOK） -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{
+      --brand:#0ea5e9; /* sky-500 */
+      --brand-dark:#0284c7; /* sky-600 */
+      --accent:#f59e0b; /* amber-500 */
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';}
+    /* ヒーローの背景グラデ＋模様 */
+    .hero-bg{
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(14,165,233,.15), transparent 60%),
+                  radial-gradient(800px 400px at -10% 0%, rgba(245,158,11,.12), transparent 60%);
+    }
+    /* 入りのフェード＆リフト */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    /* ガラス風カード（ヒーローの数字や実績） */
+    .glass{
+      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,.6);
+      box-shadow: 0 10px 30px rgba(2,8,23,.08);
+    }
+    /* CTAボタン */
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+      font-weight:700;border-radius:.75rem;padding:.85rem 1.25rem;
+      background: linear-gradient(180deg, var(--brand), var(--brand-dark));
+      color:#fff; box-shadow:0 10px 20px rgba(14,165,233,.25);
+      transition:transform .06s ease, box-shadow .2s ease;
+    }
+    .btn:hover{transform:translateY(-1px); box-shadow:0 14px 24px rgba(14,165,233,.35)}
+    .btn:active{transform:translateY(0)}
+    /* 固定フッターCTA（スマホ強） */
+    .sticky-cta{
+      position:sticky; bottom:0; z-index:40; backdrop-filter:saturate(120%) blur(8px);
+      background:rgba(255,255,255,.85); border-top:1px solid rgba(2,8,23,.06);
+    }
+    /* FAQ アコーディオン */
+    .faq-a{max-height:0; overflow:hidden; transition:max-height .35s ease}
+    .faq.open .faq-a{max-height:360px}
+    /* アクセシビリティ */
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .reveal{transition:none}
+      .btn{transition:none}
+      .faq-a{transition:none}
+    }
+  </style>
+  <!-- 構造化データ（信頼要素強化） -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Course",
+    "name":"オンラインGK（ゴレイロ）コーチング",
+    "description":"現役FリーグGKによるオンライン指導。動画添削は無制限、月1回のZoom指導つき（追加可）。10人限定・月5,000円。",
+    "provider":{"@type":"Organization","name":"Tamo Junto","url":"https://example.com"},
+    "offers":{"@type":"Offer","price":"5000","priceCurrency":"JPY","availability":"https://schema.org/InStock"}
+  }
+  </script>
+</head>
+
+<body class="text-slate-800 bg-white">
+  <!-- ヘッダー -->
+  <header class="w-full fixed top-0 left-0 z-50 bg-white/85 backdrop-blur border-b border-slate-100">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-xl font-extrabold tracking-tight">GK Online Coaching</span>
+        <span class="hidden sm:inline text-xs px-2 py-0.5 rounded-full bg-sky-100 text-sky-700">10人限定</span>
+      </div>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#about" class="hover:text-sky-600">内容</a>
+        <a href="#price" class="hover:text-sky-600">料金</a>
+        <a href="#coach" class="hover:text-sky-600">コーチ</a>
+        <a href="#faq" class="hover:text-sky-600">FAQ</a>
+      </nav>
+      <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-sm" aria-label="今すぐ申し込む">今すぐ申し込む</a>
+    </div>
+  </header>
+
+  <!-- ヒーロー -->
+  <section class="pt-24 md:pt-28 pb-12 hero-bg">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-12 gap-8 items-center">
+        <div class="md:col-span-7 reveal">
+          <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+            <span class="bg-gradient-to-r from-sky-600 to-sky-400 bg-clip-text text-transparent">現役FリーグGK</span> が、<br class="hidden md:block">あなた専属のオンラインコーチに。
+          </h1>
+          <p class="mt-4 text-slate-600 md:text-lg">
+            月5,000円／<strong>10人限定</strong>。<strong>動画添削は無制限</strong>、<strong>月1回のZoom指導</strong>つき（追加OK）。初心者歓迎、解約はいつでもOK。
+          </p>
+          <div class="mt-6 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+            <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-base" aria-label="今すぐ申し込む">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v8m4-4H8"/></svg>
+              今すぐ申し込む
+            </a>
+            <a href="#about" class="inline-flex items-center gap-2 font-semibold text-sky-700 hover:text-sky-900">
+              詳細を見る
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 011.08 1.04l-4.25 4.25a.75.75 0 01-1.06 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd"/></svg>
+            </a>
+          </div>
+
+          <!-- 実績/安心のミニカード -->
+          <div class="mt-6 grid grid-cols-3 gap-3 max-w-lg">
+            <div class="glass rounded-xl px-4 py-3 text-center">
+              <div class="text-xs text-slate-500">月額</div>
+              <div class="text-lg font-extrabold">¥5,000</div>
+            </div>
+            <div class="glass rounded-xl px-4 py-3 text-center">
+              <div class="text-xs text-slate-500">定員</div>
+              <div class="text-lg font-extrabold">10人限定</div>
+            </div>
+            <div class="glass rounded-xl px-4 py-3 text-center">
+              <div class="text-xs text-slate-500">解約</div>
+              <div class="text-lg font-extrabold">いつでもOK</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ヒーロービジュアル（差し替え用） -->
+        <div class="md:col-span-5 reveal">
+          <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-slate-200">
+            <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1400&auto=format&fit=crop" alt="GKトレーニングのイメージ" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute bottom-3 right-3 bg-black/55 text-white text-xs px-2 py-1 rounded">イメージ画像</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 共感・課題 -->
+  <section id="about" class="py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="grid md:grid-cols-12 gap-10 items-start">
+        <div class="md:col-span-6 reveal">
+          <h2 class="text-2xl md:text-3xl font-extrabold">GKの悩み、こう感じていませんか？</h2>
+          <ul class="mt-4 space-y-3 text-slate-700">
+            <li class="flex gap-2"><span class="text-accent">•</span> チームにGKコーチがいない／専門練習が少ない</li>
+            <li class="flex gap-2"><span class="text-accent">•</span> 何を練習すればいいか分からず、成長が止まっている</li>
+            <li class="flex gap-2"><span class="text-accent">•</span> 失点の原因が曖昧で同じミスを繰り返す</li>
+          </ul>
+          <p class="mt-5 text-slate-600">だから、<strong>「専属コーチをオンラインで」</strong>置きます。動画が撮れたら送る、月1回はZoomで整理する——迷いが減ると、伸びるスピードは一気に上がります。</p>
+        </div>
+        <div class="md:col-span-6 reveal">
+          <div class="rounded-2xl border border-slate-200 p-6 md:p-8">
+            <h3 class="font-extrabold text-lg">提供内容（3本柱）</h3>
+            <ul class="mt-3 space-y-3">
+              <li>
+                <div class="font-bold">動画添削：本数制限なし</div>
+                <div class="text-slate-600 text-sm">撮れたらSlackに投稿。<strong>具体的な指摘と次の一歩</strong>を短文＋要点で返します。</div>
+              </li>
+              <li>
+                <div class="font-bold">Zoom指導：月1回（追加OK）</div>
+                <div class="text-slate-600 text-sm">1回<strong>30〜40分</strong>でフォーム／判断／メンタルを整理。必要に応じて追加サポートも。</div>
+              </li>
+              <li>
+                <div class="font-bold">いつでも相談（Slack／オープンチャット）</div>
+                <div class="text-slate-600 text-sm">練習メニューの組み方、用具相談、試合前後のメンタル設計まで。</div>
+              </li>
+            </ul>
+            <div class="mt-4 text-xs text-slate-500">※ 運用目安：動画返信は<strong>48時間以内</strong>目安／Zoomは毎月の固定枠＋個別調整可（運用しながら最適化）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 料金 -->
+  <section id="price" class="py-12 md:py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal text-center">
+        <h2 class="text-2xl md:text-3xl font-extrabold">料金・定員</h2>
+        <p class="mt-2 text-slate-600">Stripeの安全な決済を利用。解約はいつでもOK（翌月から停止）。</p>
+      </div>
+      <div class="mt-8 grid md:grid-cols-3 gap-6">
+        <div class="md:col-start-2 md:col-span-1 reveal">
+          <div class="rounded-2xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm">
+            <div class="text-sm font-semibold text-sky-700">月額プラン</div>
+            <div class="mt-2 flex items-end justify-center gap-1">
+              <div class="text-4xl font-extrabold">¥5,000</div><div class="text-slate-500">/ 月</div>
+            </div>
+            <ul class="mt-5 space-y-2 text-sm text-slate-700">
+              <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 動画添削 無制限</li>
+              <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> Zoom 月1回（30〜40分）</li>
+              <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 相談し放題（Slack/OC）</li>
+              <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 初心者歓迎・解約いつでもOK</li>
+            </ul>
+            <div class="mt-6">
+              <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn w-full" aria-label="今すぐ申し込む">今すぐ申し込む</a>
+            </div>
+            <div class="mt-3 text-center text-xs text-slate-500">定員：<strong>10人限定</strong>（満員になり次第、満席表示に切替）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- コーチ紹介 -->
+  <section id="coach" class="py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-8 items-center">
+      <div class="md:col-span-5 reveal">
+        <div class="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-slate-200">
+          <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=1200&auto=format&fit=crop" alt="コーチ：西 滉太（イメージ）" class="w-full h-full object-cover" loading="lazy">
+          <div class="absolute bottom-3 right-3 bg-black/55 text-white text-xs px-2 py-1 rounded">イメージ画像</div>
+        </div>
+      </div>
+      <div class="md:col-span-7 reveal">
+        <h2 class="text-2xl md:text-3xl font-extrabold">コーチ：西 滉太</h2>
+        <p class="mt-2 text-slate-600">Fリーグ「しながわシティ」所属ゴレイロ。ブラジル修行経験。技術だけでなく、<strong>判断・準備・メンタル</strong>まで含めた“総合的な守護神づくり”を伴走します。</p>
+        <ul class="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
+          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 現役選手の視点で、いま必要な課題と練習法を提示</li>
+          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 具体的・短文のフィードバックで迷いを減らす</li>
+          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> メンタルの整え方・試合前後の準備まで</li>
+          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 初心者〜上級まで個別最適化</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-12 md:py-16 bg-slate-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="reveal text-center">
+        <h2 class="text-2xl md:text-3xl font-extrabold">よくある質問</h2>
+        <p class="mt-2 text-slate-600">不安をゼロにしてから始めてください。</p>
+      </div>
+      <div class="mt-8 max-w-3xl mx-auto space-y-3">
+        <!-- Q1 -->
+        <div class="faq rounded-xl bg-white border border-slate-200 p-4 reveal">
+          <button class="w-full text-left flex items-center justify-between gap-3">
+            <span class="font-bold">初心者でも大丈夫ですか？</span>
+            <span class="text-slate-500">＋</span>
+          </button>
+          <div class="faq-a mt-2 text-slate-600">
+            もちろんです。基礎フォームから丁寧にサポートします。動画はスマホ撮影でOKです。
+          </div>
+        </div>
+        <!-- Q2 -->
+        <div class="faq rounded-xl bg-white border border-slate-200 p-4 reveal">
+          <button class="w-full text-left flex items-center justify-between gap-3">
+            <span class="font-bold">動画は何本まで送れますか？</span>
+            <span class="text-slate-500">＋</span>
+          </button>
+          <div class="faq-a mt-2 text-slate-600">
+            <strong>無制限</strong>です。投稿ペースは一緒に最適化します（質を上げるため、重要シーンの絞り込みをお願いする場合があります）。
+          </div>
+        </div>
+        <!-- Q3 -->
+        <div class="faq rounded-xl bg-white border border-slate-200 p-4 reveal">
+          <button class="w-full text-left flex items-center justify-between gap-3">
+            <span class="font-bold">Zoomはどのくらいの長さ？追加は可能？</span>
+            <span class="text-slate-500">＋</span>
+          </button>
+          <div class="faq-a mt-2 text-slate-600">
+            基本は<strong>月1回・30〜40分</strong>です。必要に応じて<strong>追加（有料）</strong>も可能です。
+          </div>
+        </div>
+        <!-- Q4 -->
+        <div class="faq rounded-xl bg-white border border-slate-200 p-4 reveal">
+          <button class="w-full text-left flex items-center justify-between gap-3">
+            <span class="font-bold">解約はいつでもできますか？</span>
+            <span class="text-slate-500">＋</span>
+          </button>
+          <div class="faq-a mt-2 text-slate-600">
+            はい。<strong>いつでも可能</strong>です。解約は翌月からの停止となります（Stripeのカスタマーポータルでご自身で手続きできます）。
+          </div>
+        </div>
+        <!-- Q5 -->
+        <div class="faq rounded-xl bg-white border border-slate-200 p-4 reveal">
+          <button class="w-full text-left flex items-center justify-between gap-3">
+            <span class="font-bold">連絡手段は？Slackが初めてでも大丈夫？</span>
+            <span class="text-slate-500">＋</span>
+          </button>
+          <div class="faq-a mt-2 text-slate-600">
+            主に<strong>Slack／オープンチャット</strong>を使います。初回に使い方ミニガイドをお渡しします。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 再CTA -->
+  <section class="py-12 md:py-16">
+    <div class="max-w-6xl mx-auto px-4 text-center reveal">
+      <h2 class="text-2xl md:text-3xl font-extrabold">10人限定。プロの“目”が入るだけで、GKは変わる。</h2>
+      <p class="mt-2 text-slate-600">インスタからの申込歓迎。満席になり次第、募集を締め切ります。</p>
+      <div class="mt-6">
+        <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-base" aria-label="今すぐ申し込む">今すぐ申し込む</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 固定フッターCTA（スマホで強力） -->
+  <div class="sticky-cta">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      <div class="text-sm">
+        <span class="font-extrabold">月5,000円</span>・<span class="font-semibold">10人限定</span>｜動画添削 無制限・Zoom月1回
+      </div>
+      <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-sm" aria-label="今すぐ申し込む">申込む</a>
+    </div>
+  </div>
+
+  <!-- フッター -->
+  <footer class="py-8 border-t border-slate-100 text-center text-xs text-slate-500">
+    <div class="max-w-6xl mx-auto px-4">
+      <div>© <span id="y"></span> Tamo Junto / Nishi Kota</div>
+      <div class="mt-2">※ 返金・規約などは別ページに明記してください（「翌月停止」「途中月の返金なし」等）。</div>
+    </div>
+  </footer>
+
+  <!-- JS（軽量ギミック：スクロール出現／FAQ開閉／年号） -->
+  <script>
+    // 年号
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // スクロールで要素をふわっと出す
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+      });
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // FAQアコーディオン
+    document.querySelectorAll('.faq > button').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const box = btn.parentElement;
+        const open = box.classList.contains('open');
+        document.querySelectorAll('.faq').forEach(b=>b.classList.remove('open'));
+        if(!open) box.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
