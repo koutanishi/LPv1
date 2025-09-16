@@ -1,59 +1,92 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <title>GKオンラインコーチング｜指導の場がないGKへ</title>
-  <meta name="description" content="指導の場がないGKへ。現役Fリーグ選手が、動画添削（無制限）・月1回のZoom指導・相談し放題で伴走。月額5,000円／10人限定。初心者歓迎・解約いつでもOK。" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root{--blue:#0ea5e9;--blue-dark:#0369a1;--ink:#0f172a;--gray:#f8fafc;--accent:#f59e0b}
-    body{font-family:'Noto Sans JP',system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial}
-    .btn{background:linear-gradient(180deg,var(--blue),var(--blue-dark));color:#fff;padding:.85rem 1.25rem;border-radius:.8rem;font-weight:700;box-shadow:0 10px 20px rgba(14,165,233,.28);transition:.2s}
-    .btn:hover{transform:translateY(-2px);box-shadow:0 14px 24px rgba(14,165,233,.38)}
-    .btn-ghost{font-weight:700;color:#075985}
-    .section{padding:4rem 1rem}
-    .card{background:#fff;border-radius:1.1rem;padding:1.5rem;box-shadow:0 8px 18px rgba(2,8,23,.06);border:1px solid rgba(2,8,23,.06);transition:.2s}
-    .card:hover{transform:translateY(-2px)}
-    .hero{background:
-      radial-gradient(1100px 600px at 80% -10%, rgba(14,165,233,.15), transparent 60%),
-      radial-gradient(800px 400px at -10% 0%, rgba(245,158,11,.10), transparent 60%)}
-    .icon{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:#f0f9ff;border:1px solid #e2e8f0}
-    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-    .sticky-cta{position:sticky;bottom:0;z-index:40;backdrop-filter:saturate(120%) blur(8px);background:rgba(255,255,255,.92);border-top:1px solid rgba(2,8,23,.06)}
-    @media (prefers-reduced-motion:reduce){.reveal{transition:none}.btn{transition:none}}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>GKオンラインコーチング｜指導の場がないGKへ</title>
+<meta name="description" content="指導の場がないGKへ。現役Fリーグ選手が、動画添削（無制限）・月1回のZoom指導・相談し放題で伴走。月額5,000円／10人限定。初心者歓迎・解約いつでもOK。" />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root{--blue:#0ea5e9;--blue-d:#0369a1;--ink:#0f172a;--soft:#f1f5f9;--amber:#f59e0b}
+  body{font-family:'Noto Sans JP',system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+  /* ====== UI ====== */
+  .btn{background:linear-gradient(180deg,var(--blue),var(--blue-d));color:#fff;padding:.9rem 1.2rem;border-radius:.9rem;font-weight:800;box-shadow:0 10px 20px rgba(14,165,233,.28);transition:transform .18s, box-shadow .25s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 24px rgba(14,165,233,.38)}
+  .btn:active{transform:translateY(0)}
+  .btn-ghost{font-weight:700;color:#075985}
+  .section{padding:4rem 1rem}
+  .hero{background:
+    radial-gradient(1100px 600px at 80% -10%, rgba(14,165,233,.16), transparent 60%),
+    radial-gradient(800px 400px at -10% 0%, rgba(245,158,11,.10), transparent 60%)}
+  .card{background:#fff;border-radius:1.1rem;padding:1.5rem;box-shadow:0 10px 22px rgba(2,8,23,.06);border:1px solid rgba(2,8,23,.06);transition:transform .35s cubic-bezier(.2,.6,.2,1), box-shadow .35s}
+  .card:hover{transform:translateY(-6px) scale(1.01);box-shadow:0 16px 28px rgba(2,8,23,.10)}
+  .icon{width:62px;height:62px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:#f0f9ff;border:1px solid #e2e8f0}
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .sticky-cta{position:sticky;bottom:0;z-index:40;backdrop-filter:saturate(120%) blur(8px);background:rgba(255,255,255,.92);border-top:1px solid rgba(2,8,23,.06)}
+  /* ====== Motion extras ====== */
+  /* 進捗バー */
+  .progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--blue),#22d3ee);width:0%;z-index:60}
+  /* スクロール誘導矢印 */
+  .chev{width:24px;height:24px;border-right:3px solid #075985;border-bottom:3px solid #075985;transform:rotate(45deg);animation:chev 1.8s infinite}
+  @keyframes chev{
+    0%{opacity:0;transform:translateY(0) rotate(45deg)}
+    40%{opacity:1;transform:translateY(6px) rotate(45deg)}
+    100%{opacity:0;transform:translateY(12px) rotate(45deg)}
+  }
+  /* CTA微鼓動（hover時） */
+  .btn:hover{animation:pulse .9s ease-out 1}
+  @keyframes pulse{0%{box-shadow:0 10px 20px rgba(14,165,233,.28)}70%{box-shadow:0 18px 30px rgba(14,165,233,.45)}100%{box-shadow:0 14px 24px rgba(14,165,233,.38)}}
+  /* 3本柱の矢印ライン（描画アニメ） */
+  .dash-line{stroke:#94a3b8;stroke-width:2;stroke-dasharray:6 6;animation:dash 2.5s linear infinite}
+  @keyframes dash{to{stroke-dashoffset:-120}}
+  /* パララックス用 */
+  .parallax{transform:translateY(var(--py,0))}
+  /* FAQ */
+  details summary{list-style:none}
+  details summary::-webkit-details-marker{display:none}
+  /* Reduce Motion配慮 */
+  @media (prefers-reduced-motion:reduce){
+    .reveal{transition:none}
+    .btn{transition:none;animation:none}
+    .card{transition:none}
+    .dash-line{animation:none}
+    .chev{animation:none}
+  }
+</style>
 </head>
 <body class="bg-white text-slate-800">
 
-  <!-- Header -->
-  <header class="w-full fixed top-0 left-0 z-50 bg-white/85 backdrop-blur border-b border-slate-100">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <span class="text-xl font-extrabold tracking-tight">GK Online Coaching</span>
-        <span class="hidden sm:inline text-xs px-2 py-0.5 rounded bg-sky-100 text-sky-700">10人限定</span>
-      </div>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#about" class="hover:text-sky-700">内容</a>
-        <a href="#effects" class="hover:text-sky-700">効果</a>
-        <a href="#price" class="hover:text-sky-700">料金</a>
-        <a href="#coach" class="hover:text-sky-700">コーチ</a>
-        <a href="#voice" class="hover:text-sky-700">声</a>
-        <a href="#faq" class="hover:text-sky-700">FAQ</a>
-      </nav>
-      <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-sm">申し込む</a>
-    </div>
-  </header>
+<!-- スクロール進捗バー -->
+<div id="progress" class="progress"></div>
 
-  <!-- Hero -->
-  <section class="section hero pt-24 md:pt-28">
-    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-8 items-center">
-      <div class="md:col-span-7 reveal">
-        <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
-          指導の場が見つからないGKへ。<br><span class="text-sky-600">ここを“学びの拠点”にしよう。</span>
-        </h1>
+<!-- Header -->
+<header class="w-full fixed top-0 left-0 z-50 bg-white/85 backdrop-blur border-b border-slate-100">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="text-xl font-extrabold tracking-tight">GK Online Coaching</span>
+      <span class="hidden sm:inline text-xs px-2 py-0.5 rounded bg-sky-100 text-sky-700">10人限定</span>
+    </div>
+    <nav class="hidden md:flex items-center gap-6 text-sm">
+      <a href="#about" class="hover:text-sky-700">内容</a>
+      <a href="#effects" class="hover:text-sky-700">効果</a>
+      <a href="#price" class="hover:text-sky-700">料金</a>
+      <a href="#coach" class="hover:text-sky-700">コーチ</a>
+      <a href="#voice" class="hover:text-sky-700">声</a>
+      <a href="#faq" class="hover:text-sky-700">FAQ</a>
+    </nav>
+    <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-sm">申し込む</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="section hero pt-24 md:pt-28">
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-8 items-center">
+    <div class="md:col-span-7 reveal">
+      <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">
+        指導の場が見つからないGKへ。<br><span class="text-sky-600">ここを“学びの拠点”にしよう。</span>
+      </h1>
       <p class="mt-4 text-lg text-slate-700">
         現役Fリーグ選手が伴走。月5,000円／<strong>10人限定</strong>。<strong>動画添削は無制限</strong>・<strong>月1回Zoom</strong>（追加可）・相談し放題。解約はいつでもOK。
       </p>
@@ -61,28 +94,40 @@
         <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-base">今すぐ申し込む</a>
         <a href="#about" class="btn-ghost text-base">内容を見る</a>
       </div>
-      </div>
-      <div class="md:col-span-5 reveal">
-        <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-slate-200">
-          <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1400&auto=format&fit=crop" alt="GKトレーニングのイメージ" class="w-full h-full object-cover" loading="lazy">
-          <div class="absolute bottom-3 right-3 bg-black/55 text-white text-xs px-2 py-1 rounded">イメージ写真</div>
-        </div>
+      <!-- 下向き矢印（スクロール誘導） -->
+      <div class="mt-8 flex items-center gap-2 text-slate-500 text-sm">
+        下へスクロール
+        <span class="chev"></span>
       </div>
     </div>
-  </section>
-
-  <!-- 3本柱（イラスト付き） -->
-  <section id="about" class="section bg-sky-50">
-    <div class="max-w-6xl mx-auto px-4">
-      <div class="text-center reveal">
-        <h2 class="text-2xl md:text-3xl font-extrabold">3つの柱で、迷いを減らす</h2>
-        <p class="mt-2 text-slate-600">「今の環境でも伸ばせる仕組み」を用意しました。</p>
+    <div class="md:col-span-5 reveal parallax" data-parallax="8">
+      <div class="relative rounded-2xl overflow-hidden shadow-2xl ring-1 ring-slate-200">
+        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=1400&auto=format&fit=crop" alt="GKトレーニングのイメージ" class="w-full h-full object-cover" loading="lazy">
+        <div class="absolute bottom-3 right-3 bg-black/55 text-white text-xs px-2 py-1 rounded">イメージ写真</div>
       </div>
-      <div class="grid md:grid-cols-3 gap-6 mt-8">
-        <!-- Pillar 1 -->
-        <article class="card reveal">
+    </div>
+  </div>
+</section>
+
+<!-- 3本柱 + 矢印ライン -->
+<section id="about" class="section bg-sky-50 relative overflow-hidden">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center reveal">
+      <h2 class="text-2xl md:text-3xl font-extrabold">3つの柱で、迷いを減らす</h2>
+      <p class="mt-2 text-slate-600">「今の環境でも伸ばせる仕組み」を用意しました。</p>
+    </div>
+
+    <div class="relative mt-10">
+      <!-- SVG矢印ライン（PCのみ表示） -->
+      <svg class="hidden md:block absolute left-0 right-0 -top-6 w-full h-36" viewBox="0 0 1000 160" fill="none" aria-hidden="true">
+        <path d="M80 80 C 260 20, 420 140, 600 80 S 920 60, 920 80" class="dash-line"/>
+        <polygon points="920,80 902,72 906,80 902,88" fill="#94a3b8"/>
+      </svg>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="card reveal parallax" data-parallax="6">
           <div class="icon mb-4">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <circle cx="12" cy="12" r="10" stroke="#0284c7" stroke-width="1.6"/>
               <polygon points="10,8 16,12 10,16" fill="#0ea5e9"/>
             </svg>
@@ -90,221 +135,246 @@
           <h3 class="font-bold text-lg text-sky-700">動画添削（無制限）</h3>
           <p class="mt-2 text-slate-700 text-sm leading-relaxed">
             送ってくれたプレーに、<span class="font-semibold">短く、具体的に</span>返します。<br>
-            「何を直すか」「次に何をやるか」が明確になり、<span class="font-semibold">練習の質が上がる</span>。
+            「何を直すか」「次に何をやるか」が明確に。<span class="font-semibold">練習の質が上がる。</span>
           </p>
           <p class="mt-2 text-xs text-slate-500">原則48時間以内に返信</p>
         </article>
-        <!-- Pillar 2 -->
-        <article class="card reveal">
+
+        <article class="card reveal parallax" data-parallax="4">
           <div class="icon mb-4">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <rect x="3" y="5" width="14" height="12" rx="2" stroke="#0284c7" stroke-width="1.6"/>
               <polygon points="17,9 21,7 21,17 17,15" fill="#0ea5e9"/>
             </svg>
           </div>
           <h3 class="font-bold text-lg text-sky-700">Zoom指導（月1回・30〜40分）</h3>
           <p class="mt-2 text-slate-700 text-sm leading-relaxed">
-            技術・判断・メンタルを整理。<span class="font-semibold">一人で悩む時間を減らし</span>、自信につなげます。<br>
-            追加Zoom（有料）も対応可能。
+            技術・判断・メンタルを整理。<span class="font-semibold">一人で悩む時間を減らし</span>、自信へ。
+            追加Zoom（有料）も対応。
           </p>
         </article>
-        <!-- Pillar 3 -->
-        <article class="card reveal">
+
+        <article class="card reveal parallax" data-parallax="2">
           <div class="icon mb-4">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" aria-hidden="true">
               <path d="M4 6h12a3 3 0 013 3v3a3 3 0 01-3 3H9l-4 3v-3H4a3 3 0 01-3-3V9a3 3 0 013-3z" stroke="#0284c7" stroke-width="1.6" fill="none"/>
               <circle cx="9" cy="11" r="1" fill="#0ea5e9"/><circle cx="12" cy="11" r="1" fill="#0ea5e9"/><circle cx="15" cy="11" r="1" fill="#0ea5e9"/>
             </svg>
           </div>
           <h3 class="font-bold text-lg text-sky-700">相談し放題（Slack／OC）</h3>
           <p class="mt-2 text-slate-700 text-sm leading-relaxed">
-            練習メニュー、用具、試合前後の準備まで。<span class="font-semibold">小さな疑問をその場で解決</span>して、歩みを止めません。
+            練習メニュー、用具、試合前後の準備まで。<span class="font-semibold">小さな疑問をその場で解決</span>して歩みを止めません。
           </p>
         </article>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 効果・約束 -->
-  <section id="effects" class="section bg-white">
-    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-6 items-center">
-      <div class="md:col-span-6 reveal">
-        <h2 class="text-2xl md:text-3xl font-extrabold">こう変わります</h2>
-        <ul class="mt-4 space-y-3 text-slate-700">
-          <li>・練習の狙いが明確になり、<span class="font-semibold">無駄撃ちが減る</span></li>
-          <li>・試合の振り返りが具体化し、<span class="font-semibold">同じ失点を繰り返さない</span></li>
-          <li>・「今の自分に必要なこと」が分かり、<span class="font-semibold">迷いが自信に変わる</span></li>
+<!-- 効果・約束 -->
+<section id="effects" class="section bg-white">
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-6 items-center">
+    <div class="md:col-span-6 reveal">
+      <h2 class="text-2xl md:text-3xl font-extrabold">こう変わります</h2>
+      <ul class="mt-4 space-y-3 text-slate-700">
+        <li>・練習の狙いが明確になり、<span class="font-semibold">無駄撃ちが減る</span></li>
+        <li>・振り返りが具体化し、<span class="font-semibold">同じ失点を繰り返さない</span></li>
+        <li>・いま必要なことが分かり、<span class="font-semibold">迷いが自信に変わる</span></li>
+      </ul>
+    </div>
+    <div class="md:col-span-6 reveal">
+      <div class="card">
+        <h3 class="font-bold text-lg">小さな約束</h3>
+        <ul class="mt-3 text-sm text-slate-700 space-y-2">
+          <li>✓ フィードバックは<strong>短く具体的</strong>に</li>
+          <li>✓ 返信は<strong>原則48時間以内</strong></li>
+          <li>✓ 「次の一歩」を必ず提示</li>
         </ul>
+        <p class="text-xs text-slate-500 mt-3">※ 運用しながら最適化します</p>
       </div>
-      <div class="md:col-span-6 reveal">
-        <div class="card">
-          <h3 class="font-bold text-lg">小さな約束</h3>
-          <ul class="mt-3 text-sm text-slate-700 space-y-2">
-            <li>✓ フィードバックは<strong>短く具体的</strong>に</li>
-            <li>✓ 返信は<strong>原則48時間以内</strong></li>
-            <li>✓ 「次の一歩」を必ず提示</li>
-          </ul>
-          <p class="text-xs text-slate-500 mt-3">※ 運用しながら最適化します</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 料金 -->
-  <section id="price" class="section bg-gradient-to-br from-white to-sky-50">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h2 class="text-2xl md:text-3xl font-extrabold reveal">料金プラン</h2>
-      <div class="grid md:grid-cols-3 gap-6 mt-8">
-        <div class="md:col-start-2 md:col-span-1">
-          <div class="card border border-sky-100 reveal">
-            <div class="text-sm font-semibold text-sky-700">月額プラン</div>
-            <div class="mt-2 flex items-end justify-center gap-1">
-              <div class="text-4xl font-extrabold">¥5,000</div><div class="text-slate-500">/ 月</div>
-            </div>
-            <ul class="mt-5 text-sm text-slate-700 space-y-2 text-left">
-              <li>✓ 動画添削 無制限</li>
-              <li>✓ Zoom 月1回（30〜40分）※追加可</li>
-              <li>✓ 相談し放題（Slack/OC）</li>
-              <li>✓ 初心者歓迎・解約いつでもOK</li>
-            </ul>
-            <div class="mt-6">
-              <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn w-full">今すぐ申し込む</a>
-            </div>
-            <p class="mt-3 text-xs text-slate-500">定員：10人限定</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- 小さめ支払い案内 -->
-      <div class="mt-6 text-center text-[11px] text-slate-500 reveal">
-        <p>お支払いはStripeの決済ページで行います。対応カード：</p>
-        <div class="mt-2 inline-flex flex-wrap items-center justify-center gap-2">
-          <span class="px-2 py-1 bg-slate-100 rounded">Visa</span>
-          <span class="px-2 py-1 bg-slate-100 rounded">Mastercard</span>
-          <span class="px-2 py-1 bg-slate-100 rounded">JCB</span>
-          <span class="px-2 py-1 bg-slate-100 rounded">American Express</span>
-          <span class="px-2 py-1 bg-slate-100 rounded">Diners</span>
-          <span class="px-2 py-1 bg-slate-100 rounded">Discover</span>
-          <span class="px-2 py-1 bg-slate-100 rounded">Apple Pay / Google Pay</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- コーチ紹介 -->
-  <section id="coach" class="section bg-white">
-    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-8 items-center">
-      <div class="md:col-span-5 reveal">
-        <div class="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-slate-200">
-          <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=1200&auto=format&fit=crop" alt="コーチ：西 滉太（イメージ）" class="w-full h-full object-cover" loading="lazy">
-          <div class="absolute bottom-3 right-3 bg-black/55 text-white text-xs px-2 py-1 rounded">イメージ写真</div>
-        </div>
-      </div>
-      <div class="md:col-span-7 reveal">
-        <h2 class="text-2xl md:text-3xl font-extrabold">コーチ：西 滉太</h2>
-        <p class="mt-2 text-slate-700">
-          Fリーグ「しながわシティ」所属。<span class="font-semibold">「指導の場がないGKを助けたい」</span>という思いで、技術だけでなく
-          <span class="font-semibold">判断・準備・メンタル</span>まで伴走します。
-        </p>
-        <ul class="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
-          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 今の環境でできる練習と優先順位を提示</li>
-          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 迷いを減らす、短く具体的なフィードバック</li>
-          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 試合前後の準備・心の整え方まで</li>
-          <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 初心者〜上級まで個別最適化</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- 受講者の声（仮） -->
-  <section id="voice" class="section bg-slate-50">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-center reveal">受講者の声</h2>
-      <div class="grid md:grid-cols-3 gap-6 mt-8">
-        <div class="card reveal">
-          <p class="text-sm text-slate-700">「指摘がはっきりしていて、練習が変わりました。失点の原因を具体的に直せるように。」</p>
-          <div class="mt-3 text-xs text-slate-500">高校GK / Aさん</div>
-        </div>
-        <div class="card reveal">
-          <p class="text-sm text-slate-700">「試合前の準備とメンタルの整え方が分かり、落ち着いてプレーできるように。」</p>
-          <div class="mt-3 text-xs text-slate-500">社会人GK / Bさん</div>
-        </div>
-        <div class="card reveal">
-          <p class="text-sm text-slate-700">「Zoomで月1回整理できるのが良い。次に何をするかが毎回明確になる。」</p>
-          <div class="mt-3 text-xs text-slate-500">中学GK / Cさん</div>
-        </div>
-      </div>
-      <p class="mt-4 text-center text-xs text-slate-500">※ モニターの感想。実名化・写真掲載で更に信頼性UP</p>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="section bg-white">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl md:text-3xl font-extrabold text-center reveal">よくある質問</h2>
-      <div class="max-w-3xl mx-auto mt-6 space-y-3">
-        <div class="card reveal">
-          <details>
-            <summary class="font-semibold cursor-pointer">初心者でも大丈夫？</summary>
-            <p class="mt-2 text-sm text-slate-700">はい、大丈夫です。基礎から丁寧に進めます。</p>
-          </details>
-        </div>
-        <div class="card reveal">
-          <details>
-            <summary class="font-semibold cursor-pointer">動画は何本まで送れる？</summary>
-            <p class="mt-2 text-sm text-slate-700"><span class="font-semibold">無制限</span>です。大事なシーンに絞って添削します。</p>
-          </details>
-        </div>
-        <div class="card reveal">
-          <details>
-            <summary class="font-semibold cursor-pointer">Zoomの長さ・追加は？</summary>
-            <p class="mt-2 text-sm text-slate-700">基本は<span class="font-semibold">月1回・30〜40分</span>。追加は<span class="font-semibold">有料</span>で対応します。</p>
-          </details>
-        </div>
-        <div class="card reveal">
-          <details>
-            <summary class="font-semibold cursor-pointer">解約はいつでも可能？</summary>
-            <p class="mt-2 text-sm text-slate-700">いつでも可能です。翌月から停止となります。</p>
-          </details>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 再CTA -->
-  <section class="section bg-gradient-to-r from-sky-600 to-sky-800 text-center text-white">
-    <h2 class="text-2xl md:text-3xl font-extrabold reveal">「環境がない」を言い訳にしない。</h2>
-    <p class="mt-2 reveal">ここから、伸びる。</p>
-    <div class="mt-6">
-      <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn bg-white text-sky-700">今すぐ申し込む</a>
-    </div>
-  </section>
-
-  <!-- Sticky CTA -->
-  <div class="sticky-cta">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-      <div class="text-sm">
-        <span class="font-extrabold">月5,000円</span>・<span class="font-semibold">10人限定</span>｜動画添削 無制限・Zoom月1回
-      </div>
-      <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-sm">申込む</a>
     </div>
   </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="py-10 bg-slate-900 text-slate-300 text-center text-sm">
-    <div>© <span id="y"></span> Tamo Junto / Nishi Kota</div>
-    <div class="mt-2 text-xs">
-      <a href="/terms" class="hover:underline">利用規約</a> ｜ 
-      <a href="/privacy" class="hover:underline">プライバシーポリシー</a> ｜ 
-      <a href="/law" class="hover:underline">特定商取引法に基づく表示</a>
+<!-- 料金 + 小さめ支払い -->
+<section id="price" class="section bg-gradient-to-br from-white to-sky-50">
+  <div class="max-w-6xl mx-auto px-4 text-center">
+    <h2 class="text-2xl md:text-3xl font-extrabold reveal">料金プラン</h2>
+    <div class="grid md:grid-cols-3 gap-6 mt-8">
+      <div class="md:col-start-2 md:col-span-1">
+        <div class="card border border-sky-100 reveal">
+          <div class="text-sm font-semibold text-sky-700">月額プラン</div>
+          <div class="mt-2 flex items-end justify-center gap-1">
+            <div class="text-4xl font-extrabold">¥5,000</div><div class="text-slate-500">/ 月</div>
+          </div>
+          <ul class="mt-5 text-sm text-slate-700 space-y-2 text-left">
+            <li>✓ 動画添削 無制限</li>
+            <li>✓ Zoom 月1回（30〜40分）※追加可</li>
+            <li>✓ 相談し放題（Slack/OC）</li>
+            <li>✓ 初心者歓迎・解約いつでもOK</li>
+          </ul>
+          <div class="mt-6">
+            <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn w-full">今すぐ申し込む</a>
+          </div>
+          <p class="mt-3 text-xs text-slate-500">定員：10人限定</p>
+        </div>
+      </div>
     </div>
-  </footer>
 
-  <!-- JS：フェードイン -->
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-    const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}})},{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  </script>
+    <div class="mt-6 text-center text-[11px] text-slate-500 reveal">
+      <p>お支払いはStripeの決済ページで行います。対応カード：</p>
+      <div class="mt-2 inline-flex flex-wrap items-center justify-center gap-2">
+        <span class="px-2 py-1 bg-slate-100 rounded">Visa</span>
+        <span class="px-2 py-1 bg-slate-100 rounded">Mastercard</span>
+        <span class="px-2 py-1 bg-slate-100 rounded">JCB</span>
+        <span class="px-2 py-1 bg-slate-100 rounded">American Express</span>
+        <span class="px-2 py-1 bg-slate-100 rounded">Diners</span>
+        <span class="px-2 py-1 bg-slate-100 rounded">Discover</span>
+        <span class="px-2 py-1 bg-slate-100 rounded">Apple Pay / Google Pay</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- コーチ紹介 -->
+<section id="coach" class="section bg-white">
+  <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-12 gap-8 items-center">
+    <div class="md:col-span-5 reveal parallax" data-parallax="6">
+      <div class="relative rounded-2xl overflow-hidden shadow-xl ring-1 ring-slate-200">
+        <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?q=80&w=1200&auto=format&fit=crop" alt="コーチ：西 滉太（イメージ）" class="w-full h-full object-cover" loading="lazy">
+        <div class="absolute bottom-3 right-3 bg-black/55 text-white text-xs px-2 py-1 rounded">イメージ写真</div>
+      </div>
+    </div>
+    <div class="md:col-span-7 reveal">
+      <h2 class="text-2xl md:text-3xl font-extrabold">コーチ：西 滉太</h2>
+      <p class="mt-2 text-slate-700">
+        Fリーグ「しながわシティ」所属。<span class="font-semibold">「指導の場がないGKを助けたい」</span>という思いで、技術だけでなく
+        <span class="font-semibold">判断・準備・メンタル</span>まで伴走します。
+      </p>
+      <ul class="mt-4 grid sm:grid-cols-2 gap-3 text-sm">
+        <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 今の環境でできる練習と優先順位を提示</li>
+        <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 迷いを減らす、短く具体的なフィードバック</li>
+        <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 試合前後の準備・心の整え方まで</li>
+        <li class="flex items-start gap-2"><span class="text-sky-500">✓</span> 初心者〜上級まで個別最適化</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 受講者の声（仮） -->
+<section id="voice" class="section bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center reveal">受講者の声</h2>
+    <div class="grid md:grid-cols-3 gap-6 mt-8">
+      <div class="card reveal">
+        <p class="text-sm text-slate-700">「指摘がはっきりしていて、練習が変わりました。失点の原因を具体的に直せるように。」</p>
+        <div class="mt-3 text-xs text-slate-500">高校GK / Aさん</div>
+      </div>
+      <div class="card reveal">
+        <p class="text-sm text-slate-700">「試合前の準備とメンタルの整え方が分かり、落ち着いてプレーできるように。」</p>
+        <div class="mt-3 text-xs text-slate-500">社会人GK / Bさん</div>
+      </div>
+      <div class="card reveal">
+        <p class="text-sm text-slate-700">「Zoomで月1回整理できるのが良い。次に何をするかが毎回明確になる。」</p>
+        <div class="mt-3 text-xs text-slate-500">中学GK / Cさん</div>
+      </div>
+    </div>
+    <p class="mt-4 text-center text-xs text-slate-500">※ モニターの感想。実名・写真・数値が入るとさらに強くなります。</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-extrabold text-center reveal">よくある質問</h2>
+    <div class="max-w-3xl mx-auto mt-6 space-y-3">
+      <div class="card reveal">
+        <details>
+          <summary class="font-semibold cursor-pointer">初心者でも大丈夫？</summary>
+          <p class="mt-2 text-sm text-slate-700">はい、大丈夫です。基礎から丁寧に進めます。</p>
+        </details>
+      </div>
+      <div class="card reveal">
+        <details>
+          <summary class="font-semibold cursor-pointer">動画は何本まで送れる？</summary>
+          <p class="mt-2 text-sm text-slate-700"><span class="font-semibold">無制限</span>です。大事なシーンに絞って添削します。</p>
+        </details>
+      </div>
+      <div class="card reveal">
+        <details>
+          <summary class="font-semibold cursor-pointer">Zoomの長さ・追加は？</summary>
+          <p class="mt-2 text-sm text-slate-700">基本は<span class="font-semibold">月1回・30〜40分</span>。追加は<span class="font-semibold">有料</span>で対応します。</p>
+        </details>
+      </div>
+      <div class="card reveal">
+        <details>
+          <summary class="font-semibold cursor-pointer">解約はいつでも可能？</summary>
+          <p class="mt-2 text-sm text-slate-700">いつでも可能です。翌月から停止となります。</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 再CTA -->
+<section class="section bg-gradient-to-r from-sky-600 to-sky-800 text-center text-white">
+  <h2 class="text-2xl md:text-3xl font-extrabold reveal">「環境がない」を言い訳にしない。</h2>
+  <p class="mt-2 reveal">ここから、伸びる。</p>
+  <div class="mt-6">
+    <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn bg-white text-sky-700">今すぐ申し込む</a>
+  </div>
+</section>
+
+<!-- Sticky CTA -->
+<div class="sticky-cta">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+    <div class="text-sm">
+      <span class="font-extrabold">月5,000円</span>・<span class="font-semibold">10人限定</span>｜動画添削 無制限・Zoom月1回
+    </div>
+    <a href="YOUR_STRIPE_PAYMENT_LINK" class="btn text-sm">申込む</a>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="py-10 bg-slate-900 text-slate-300 text-center text-sm">
+  <div>© <span id="y"></span> Tamo Junto / Nishi Kota</div>
+  <div class="mt-2 text-xs">
+    <a href="/terms" class="hover:underline">利用規約</a> ｜ 
+    <a href="/privacy" class="hover:underline">プライバシーポリシー</a> ｜ 
+    <a href="/law" class="hover:underline">特定商取引法に基づく表示</a>
+  </div>
+</footer>
+
+<!-- JS：進捗バー／フェードイン／パララックス -->
+<script>
+  // 年号
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // フェードイン
+  const io = new IntersectionObserver((es)=>{ es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target);} });},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // スクロール進捗バー
+  const bar = document.getElementById('progress');
+  const onScroll = () => {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = scrolled + '%';
+  };
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // パララックス（軽量）
+  const pxEls = document.querySelectorAll('[data-parallax]');
+  const px = () => {
+    const y = window.scrollY || window.pageYOffset;
+    pxEls.forEach(el=>{
+      const depth = Number(el.getAttribute('data-parallax')) || 4;
+      el.style.setProperty('--py', (y * (depth/100)) + 'px');
+    });
+  };
+  document.addEventListener('scroll', px, {passive:true});
+  px();
+</script>
 </body>
 </html>
